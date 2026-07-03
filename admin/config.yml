@@ -1,0 +1,113 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://your-site.netlify.app
+
+locale: 'fa'
+
+collections:
+  - name: "hero"
+    label: "🔥 بخش Hero (صفحه اصلی)"
+    folder: "content"
+    create: false
+    delete: false
+    files:
+      - file: "content/hero.json"
+        label: "تنظیمات Hero"
+        fields:
+          - {label: "متن Badge", name: "badge", widget: "string", default: "بیش از ۵۰۰۰ دانش‌آموز موفق"}
+          - {label: "خط اول عنوان", name: "title_line1", widget: "string", default: "مسیر موفقیت تحصیلی"}
+          - {label: "خط دوم عنوان", name: "title_line2", widget: "string", default: "با مشاوره تخصصی"}
+          - {label: "توضیحات", name: "description", widget: "text"}
+          - {label: "متن دکمه اصلی", name: "button_text", widget: "string", default: "مشاوره رایگان بگیرید"}
+          - {label: "لینک دکمه", name: "button_url", widget: "string", default: "#contact"}
+          - {label: "آمار 1 - عدد", name: "stat1_number", widget: "string", default: "+۵۰۰۰"}
+          - {label: "آمار 1 - برچسب", name: "stat1_label", widget: "string", default: "دانش‌آموز موفق"}
+          - {label: "آمار 2 - عدد", name: "stat2_number", widget: "string", default: "+۱۲"}
+          - {label: "آمار 2 - برچسب", name: "stat2_label", widget: "string", default: "سال تجربه"}
+          - {label: "آمار 3 - عدد", name: "stat3_number", widget: "string", default: "۹۸٪"}
+          - {label: "آمار 3 - برچسب", name: "stat3_label", widget: "string", default: "رضایت مشتریان"}
+
+  - name: "services"
+    label: "📚 خدمات ما"
+    folder: "content/services"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "عنوان خدمت", name: "title", widget: "string"}
+      - {label: "آیکون (ایموجی)", name: "icon", widget: "string", default: "📋"}
+      - {label: "رنگ آیکون", name: "icon_color", widget: "select", options: ["blue", "green", "orange"], default: "blue"}
+      - {label: "توضیحات", name: "description", widget: "text"}
+      - {label: "لینک دکمه", name: "link", widget: "string", default: "#contact", required: false}
+
+  - name: "testimonials"
+    label: "⭐ نظرات دانش‌آموزان"
+    folder: "content/testimonials"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "نام دانش‌آموز", name: "name", widget: "string"}
+      - {label: "حرف اول نام (برای آواتار)", name: "initial", widget: "string"}
+      - {label: "رتبه/توضیح", name: "rank", widget: "string"}
+      - {label: "متن نظر", name: "text", widget: "text"}
+      - {label: "امتیاز ستاره", name: "stars", widget: "number", min: 1, max: 5, default: 5}
+
+  - name: "reportcards"
+    label: "🎓 کارنامه‌های موفقیت"
+    folder: "content/reportcards"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "نام دانش‌آموز", name: "name", widget: "string"}
+      - {label: "تصویر", name: "image", widget: "image", required: false}
+      - {label: "معدل", name: "grade", widget: "string"}
+      - {label: "رشته", name: "field", widget: "string"}
+      - {label: "نمره کل", name: "total_score", widget: "string"}
+      - {label: "وضعیت", name: "status", widget: "string", default: "تایید شده"}
+
+  - name: "blog"
+    label: "📝 مقالات"
+    folder: "content/blog"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "عنوان مقاله", name: "title", widget: "string"}
+      - {label: "تصویر", name: "image", widget: "image", required: false}
+      - {label: "تاریخ", name: "date", widget: "string"}
+      - {label: "زمان مطالعه", name: "read_time", widget: "string"}
+      - {label: "خلاصه", name: "excerpt", widget: "text"}
+
+  - name: "faq"
+    label: "❓ سوالات متداول"
+    folder: "content/faq"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "سوال", name: "question", widget: "string"}
+      - {label: "پاسخ", name: "answer", widget: "text"}
+
+  - name: "settings"
+    label: "⚙️ تنظیمات سایت"
+    folder: "content"
+    create: false
+    delete: false
+    files:
+      - file: "content/settings.json"
+        label: "تنظیمات کلی"
+        fields:
+          - {label: "تاریخ کنکور", name: "konkur_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm", default: "2026-07-03T08:00:00"}
+          - {label: "شماره تماس", name: "phone", widget: "string", default: "۰۲۱-۸۸۷۷۶۶۵۵"}
+          - {label: "واتساپ", name: "whatsapp", widget: "string", default: "۰۹۱۲-۳۴۵-۶۷۸۹"}
+          - {label: "ایمیل", name: "email", widget: "string", default: "info@moshaverehnovin.ir"}
+          - {label: "آدرس", name: "address", widget: "string", default: "تهران، خیابان ولیعصر، برج میلاد"}
+          - {label: "عنوان سایت", name: "site_title", widget: "string", default: "مشاوره تحصیلی نوین"}
+          - {label: "توضیحات متا", name: "site_description", widget: "text"}
